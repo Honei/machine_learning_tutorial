@@ -11,4 +11,4 @@
 
 ## CNN
 #### 下面是CNN中的示例代码
-### LeNet
+### [LeNet-5](https://github.com/Honei/machine_learning_tutorial/tree/master/LeNet-5#lenet-5-子项目)
