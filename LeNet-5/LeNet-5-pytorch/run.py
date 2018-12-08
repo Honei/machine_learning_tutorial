@@ -1,4 +1,4 @@
-from lenet import LeNet5
+from lenet import LeNet5, TestLeNet5
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -10,21 +10,25 @@ import visdom
 
 viz = visdom.Visdom()
 
-data_train = MNIST('./pytorch_data/mnist',
+data_train = MNIST(r'F:\1.mnist\input',
                    download=True,
                    transform=transforms.Compose([
-                       transforms.Scale((32, 32)),
+                       transforms.Resize((28, 28)),
                        transforms.ToTensor()]))
-data_test = MNIST('./pytorch_data/mnist',
+data_test = MNIST(r'F:\1.mnist\input',
                   train=False,
                   download=True,
                   transform=transforms.Compose([
-                      transforms.Scale((32, 32)),
+                      transforms.Resize((28, 28)),
                       transforms.ToTensor()]))
-data_train_loader = DataLoader(data_train, batch_size=256, shuffle=True, num_workers=8)
-data_test_loader = DataLoader(data_test, batch_size=1024, num_workers=8)
+data_train_loader = DataLoader(data_train, batch_size=1, shuffle=True, num_workers=0)
+data_test_loader = DataLoader(data_test, batch_size=1024, num_workers=0)
 
-net = LeNet5()
+
+
+# 生成一个模型
+#net = LeNet5()
+net = TestLeNet5()
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(net.parameters(), lr=2e-3)
 
@@ -51,11 +55,11 @@ def train(epoch):
 
         loss = criterion(output, labels)
 
-        loss_list.append(loss.data[0])
+        loss_list.append(loss.item())
         batch_list.append(i+1)
 
         if i % 10 == 0:
-            print('Train - Epoch %d, Batch: %d, Loss: %f' % (epoch, i, loss.data[0]))
+            print('Train - Epoch %d, Batch: %d, Loss: %f' % (epoch, i, loss.item()))
 
         # Update Visualization
         if viz.check_connection():
@@ -80,7 +84,7 @@ def test():
         total_correct += pred.eq(labels.data.view_as(pred)).sum()
 
     avg_loss /= len(data_test)
-    print('Test Avg. Loss: %f, Accuracy: %f' % (avg_loss.data[0], float(total_correct) / len(data_test)))
+    print('Test Avg. Loss: %f, Accuracy: %f' % (avg_loss.item(), float(total_correct) / len(data_test)))
 
 
 
