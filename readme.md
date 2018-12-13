@@ -3,6 +3,10 @@
 #### 这个代码中的核心代码主要是基于 [pytorch](https://github.com/pytorch/pytorch)
 
 <br>
+## 机器学习
+### 1. 线性回归
+
+<br>
 
 ## RNN
 #### 下面是RNN的相关示例代码
