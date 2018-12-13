@@ -4,7 +4,8 @@
 
 <br>
 ## 机器学习
-### 1. 线性回归
+
+### 1. [线性回归](https://github.com/Honei/machine_learning_tutorial/tree/master/Linear%20Regression)
 
 <br>
 
