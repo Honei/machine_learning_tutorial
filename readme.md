@@ -11,7 +11,7 @@
 
 <br>
 
-### 2. 逻辑斯特回归
+### 2. [逻辑斯特回归](https://github.com/Honei/machine_learning_tutorial/tree/master/%E9%80%BB%E8%BE%91%E6%96%AF%E7%89%B9%E5%9B%9E%E5%BD%92)
 
 
 <br>

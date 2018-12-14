@@ -82,14 +82,13 @@ model.eval()
 
 # 13. 获取测试结果
 predict = model(x_train)
-predict = predict
+predict = predict.data.squeeze()
 
 # 14. 绘制所有数据
-x_train = x_train[:, 0].view(32,1)
-print('x_train: ', x_train.size())
-print('y_train: ', y_train.size())
-print('predict: ', predict.size())
+x_train = x_train[:, 0]
+print('x_train: ', x_train.data.numpy().size)
+print('predict: ', predict.numpy().size)
 plt.plot(x_train.data.numpy(), y_train.data.numpy(), 'ro', label='Original data')
-plt.plot(x_train.data.numpy(), predict.data.numpy(), 'b*', label='Fitting Line')
+plt.plot(x_train.data.numpy(), predict.numpy(), 'b*', label='Fitting Line')
 plt.show()
 
