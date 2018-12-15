@@ -92,7 +92,7 @@ for epoch in range(500000):
 
 
 # 13. 绘制决策平面
-w0, w1 = model.lr.weight[0] # 去除所有的系数
+w0, w1 = model.lr.weight[0] # 取出所有的系数
 w0 = w0.item()
 w1 = w1.item()
 b = model.lr.bias.item()
